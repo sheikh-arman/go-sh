@@ -30,7 +30,7 @@ func installTrivy() {
 	}
 	data, err := sh.Command("sudo", args1...).Output()
 	if err != nil {
-		fmt.Println(err)
+		fmt.Println(" arm1 ", err)
 		//return
 	}
 	fmt.Println(string(data))
@@ -44,7 +44,7 @@ func installTrivy() {
 	}
 	data, err = sh.Command("wget", args2...).Command("sudo", args3).Output()
 	if err != nil {
-		fmt.Println(err)
+		fmt.Println(" arm2 ", err)
 		//return
 	}
 	fmt.Println(string(data))
@@ -57,7 +57,7 @@ func installTrivy() {
 	}
 	data, err = sh.Command("echo", args4...).Command("sudo", args5).Output()
 	if err != nil {
-		fmt.Println(err)
+		fmt.Println(" arm3 ", err)
 		//return
 	}
 	fmt.Println(string(data))
@@ -66,7 +66,7 @@ func installTrivy() {
 	}
 	data, err = sh.Command("sudo", args6...).Output()
 	if err != nil {
-		fmt.Println(err)
+		fmt.Println(" arm4 ", err)
 		//return
 	}
 	fmt.Println(string(data))
@@ -75,7 +75,7 @@ func installTrivy() {
 	}
 	data, err = sh.Command("sudo", args7...).Output()
 	if err != nil {
-		fmt.Println(err)
+		fmt.Println(" arm5 ", err)
 		//return
 	}
 	fmt.Println(string(data))
