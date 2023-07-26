@@ -6,12 +6,13 @@ import (
 )
 
 func main() {
-	fmt.Println("tut")
+	installTrivy()
+	/*fmt.Println("tut")
 	sh.NewSession().SetDir("/").Command("pwd")
 	sh.Test("dir", "mydir")
 	v := map[string]int{}
 	err := sh.Command("echo", `{"number": 1}`).UnmarshalJSON(&v)
-	fmt.Println(err)
+	fmt.Println(err)*/
 	//buildImage()
 	/*sh.Command("echo", "hello\tworld").Run()
 	session := sh.NewSession()
@@ -21,6 +22,64 @@ func main() {
 	session.Command("echo", "hello").Run()
 	//# set ShowCMD to true for easily debug
 	session.ShowCMD = true*/
+}
+
+func installTrivy() {
+	args1 := []interface{}{
+		"apt-get", "install", "-y", "wget", "apt-transport-https", "gnupg", "lsb-release",
+	}
+	data, err := sh.Command("sudo", args1...).Output()
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+	fmt.Println(string(data))
+
+	args2 := []interface{}{
+		"-qO", "-", "https://aquasecurity.github.io/trivy-repo/deb/public.key",
+	}
+
+	args3 := []interface{}{
+		"apt-key", "add", "-",
+	}
+	data, err = sh.Command("wget", args2...).Command("sudo", args3).Output()
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+	fmt.Println(string(data))
+	args4 := []interface{}{
+		"deb", "https://aquasecurity.github.io/trivy-repo/deb", "$(lsb_release", "-sc)", "main",
+	}
+
+	args5 := []interface{}{
+		"tee", "-a", "/etc/apt/sources.list.d/trivy.list",
+	}
+	data, err = sh.Command("echo", args4...).Command("sudo", args5).Output()
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+	fmt.Println(string(data))
+	args6 := []interface{}{
+		"apt-get", "update",
+	}
+	data, err = sh.Command("sudo", args6...).Output()
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+	fmt.Println(string(data))
+	args7 := []interface{}{
+		"apt-get", "install", "-y", "trivy",
+	}
+	data, err = sh.Command("sudo", args7...).Output()
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+	fmt.Println(string(data))
+	fmt.Println("Trivy Installation completed successfully.")
 }
 
 func buildImage() {
