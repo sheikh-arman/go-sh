@@ -31,7 +31,7 @@ func installTrivy() {
 	data, err := sh.Command("sudo", args1...).Output()
 	if err != nil {
 		fmt.Println(err)
-		return
+		//return
 	}
 	fmt.Println(string(data))
 
@@ -45,7 +45,7 @@ func installTrivy() {
 	data, err = sh.Command("wget", args2...).Command("sudo", args3).Output()
 	if err != nil {
 		fmt.Println(err)
-		return
+		//return
 	}
 	fmt.Println(string(data))
 	args4 := []interface{}{
@@ -58,7 +58,7 @@ func installTrivy() {
 	data, err = sh.Command("echo", args4...).Command("sudo", args5).Output()
 	if err != nil {
 		fmt.Println(err)
-		return
+		//return
 	}
 	fmt.Println(string(data))
 	args6 := []interface{}{
@@ -67,7 +67,7 @@ func installTrivy() {
 	data, err = sh.Command("sudo", args6...).Output()
 	if err != nil {
 		fmt.Println(err)
-		return
+		//return
 	}
 	fmt.Println(string(data))
 	args7 := []interface{}{
@@ -76,7 +76,7 @@ func installTrivy() {
 	data, err = sh.Command("sudo", args7...).Output()
 	if err != nil {
 		fmt.Println(err)
-		return
+		//return
 	}
 	fmt.Println(string(data))
 	fmt.Println("Trivy Installation completed successfully.")
