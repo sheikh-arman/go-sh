@@ -3,7 +3,6 @@ package main
 import (
 	"fmt"
 	"gomodules.xyz/go-sh"
-	"os"
 )
 
 func main() {
@@ -31,14 +30,14 @@ func main() {
 	//# set ShowCMD to true for easily debug
 	session.ShowCMD = true*/
 	//sh.Command("cat", "mariadb:11.1.1-rc-jammy.json").Run()
-	/*args := []interface{}{
+	args := []interface{}{
 		"ayugsda",
 		">>",
 		"arman.txt",
 	}
-	sh.Command("echo", args...).Run()*/
+	sh.Command("echo", args...).Run()
 
-	textToAppend := "arman\n"
+	/*textToAppend := "arman\n"
 
 	// Execute the shell command using go-sh
 	cmd := sh.Command("echo", textToAppend)
@@ -55,7 +54,7 @@ func main() {
 		fmt.Println("Error running command:", err)
 		return
 	}
-	fmt.Println("Text appended to arman.txt successfully.")
+	fmt.Println("Text appended to arman.txt successfully.")*/
 }
 
 func installTrivy() {
