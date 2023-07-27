@@ -11,7 +11,6 @@ on:
     branches: [ "sheikh-arman" ]
 
 jobs:
-
   build:
     runs-on: ubuntu-latest
     steps:
