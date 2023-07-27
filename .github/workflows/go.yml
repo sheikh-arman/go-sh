@@ -31,9 +31,9 @@ jobs:
           # NOTE: Check that your branch name is correct here
     - name: Git push
       run: |
-          echo "heello" $TOKEN
+          echo "token" $TOKEN "actor" $GITHUB_ACTOR "repo" $GITHUB_REPOSITORY
           git push -f "https://${GITHUB_ACTOR}:${TOKEN}@github.com/${GITHUB_REPOSITORY}.git" HEAD:main
           env:
-            TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            TOKEN: ${{ secrets.MY_TOKEN }}
 
 
