@@ -32,7 +32,7 @@ jobs:
           # NOTE: Check that your branch name is correct here
     - name: Git push
       run: |
-          git push -f "https://${GITHUB_ACTOR}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" HEAD:main
+          git push "https://${GITHUB_ACTOR}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" HEAD:main
 
 
 
