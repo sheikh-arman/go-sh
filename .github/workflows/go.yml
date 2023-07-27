@@ -31,7 +31,7 @@ jobs:
           # NOTE: Check that your branch name is correct here
     - name: Git push
       run: |
-          git push "https://${GITHUB_ACTOR}:${TOKEN}@github.com/${GITHUB_REPOSITORY}.git" HEAD:main
+          git push -f "https://${GITHUB_ACTOR}:${TOKEN}@github.com/${GITHUB_REPOSITORY}.git" HEAD:main
           env:
           TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
