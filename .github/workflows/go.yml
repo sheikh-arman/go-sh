@@ -30,5 +30,17 @@ jobs:
         trivy --version
     - name: Build
       run: go run *.go
+    - name: Git commit
+      run: |
+          git add .
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git commit -m "Add"
+          # NOTE: Check that your branch name is correct here
+    - name: Git push
+      run: |
+          git push "https://${GITHUB_ACTOR}:${TOKEN}@github.com/${GITHUB_REPOSITORY}.git" HEAD:main
+          env:
+          TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 

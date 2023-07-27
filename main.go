@@ -3,9 +3,17 @@ package main
 import (
 	"fmt"
 	"gomodules.xyz/go-sh"
+	"os"
 )
 
 func main() {
+	/*	output, err := sh.Command("echo", "Hello, World!").Output()
+		if err != nil {
+			fmt.Println("Error running command:", err)
+			return
+		}
+
+		fmt.Println("Command output:", string(output))*/
 	//installTrivy()
 	/*fmt.Println("tut")
 	sh.NewSession().SetDir("/").Command("pwd")
@@ -22,7 +30,32 @@ func main() {
 	session.Command("echo", "hello").Run()
 	//# set ShowCMD to true for easily debug
 	session.ShowCMD = true*/
-	sh.Command("cat", "mariadb:11.1.1-rc-jammy.json").Run()
+	//sh.Command("cat", "mariadb:11.1.1-rc-jammy.json").Run()
+	/*args := []interface{}{
+		"ayugsda",
+		">>",
+		"arman.txt",
+	}
+	sh.Command("echo", args...).Run()*/
+
+	textToAppend := "arman\n"
+
+	// Execute the shell command using go-sh
+	cmd := sh.Command("echo", textToAppend)
+
+	// Open the file with the "os" package and set the file to append mode (os.O_APPEND)
+	file, err := os.OpenFile("arman.txt", os.O_WRONLY|os.O_CREATE|os.O_APPEND, 0644)
+	if err != nil {
+		fmt.Println("Error opening file:", err)
+		return
+	}
+	defer file.Close()
+	cmd.Stdout = file
+	if err := cmd.Run(); err != nil {
+		fmt.Println("Error running command:", err)
+		return
+	}
+	fmt.Println("Text appended to arman.txt successfully.")
 }
 
 func installTrivy() {
