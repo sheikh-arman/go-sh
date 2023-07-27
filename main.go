@@ -6,7 +6,7 @@ import (
 )
 
 func main() {
-	installTrivy()
+	//installTrivy()
 	/*fmt.Println("tut")
 	sh.NewSession().SetDir("/").Command("pwd")
 	sh.Test("dir", "mydir")
@@ -22,6 +22,7 @@ func main() {
 	session.Command("echo", "hello").Run()
 	//# set ShowCMD to true for easily debug
 	session.ShowCMD = true*/
+	sh.Command("cat", "mariadb:11.1.1-rc-jammy.json").Run()
 }
 
 func installTrivy() {
