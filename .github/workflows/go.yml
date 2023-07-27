@@ -6,7 +6,7 @@ name: Go
 on:
   workflow_dispatch:
   push:
-    branches: [ "sheikh-arman" ]
+    branches: [ "main" ]
   pull_request:
     branches: [ "sheikh-arman" ]
 
