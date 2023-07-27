@@ -38,7 +38,7 @@ func main() {
 	}
 	sh.Command("echo", args...).Run()*/
 
-	textToAppend := "arman\n"
+	textToAppend := "arman5\n"
 
 	// Execute the shell command using go-sh
 	cmd := sh.Command("echo", textToAppend)
